@@ -1,0 +1,16 @@
+.navbar-brand a .desa{
+    text-decoration: none;
+    position: relative;
+}
+
+
+.navbar-brand a p{
+    left: 12px;
+    position: relative;
+}
+
+.navbar-brand .gambar{
+    top: 10px;
+    position: relative;
+    text-decoration: none;
+}

@@ -12,6 +12,48 @@
             {{-- list berita terbaru --}}
             @include('home.berita')
 
+            <div class="card mb-3">
+                <div class="card-header">
+                    <div class="card text-center bg-300">
+                        <div class="card-header py-2">
+                            <h5>DATA STATISTIK</h5>
+                        </div>
+                        <div class="card-body bg-400">
+                            <div class="row justify-content-center">
+                                <div class="col-4">
+                                    <div class="border-sm-end border-300">
+                                        <div class="text-center">
+                                            <span class="fas fa-male" style="font-size: 30px"></span>
+                                            <h6 class="text-700">Laki-Laki</h6>
+                                            <h3 class="fw-normal text-700">1729</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="border-sm-end border-300">
+                                        <div class="text-center">
+                                            <span class="fas fa-female" style="font-size: 30px"></span>
+                                            <h6 class="text-700">Perempuan</h6>
+                                            <h3 class="fw-normal text-700">1662</h3>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="border-300">
+                                        <div class="text-center">
+                                            <span class="bi-people-fill" style="font-size: 30px"></span>
+                                            <h6 class="text-700">Total</h6>
+                                            <h3 class="fw-normal text-700">3391</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
 
             <div class="card mb-3">
                 <div class="card-header bg-light">
@@ -124,15 +166,18 @@
             {{-- slide info teks gerak --}}
             @include('home.info')
 
-            <div class="progress">
-                <div class="progress-bar progress-bar-striped bg-info progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%">75%</div>
-            </div>
+
             {{-- identitas desa & pemerintahan desa --}}
             @include('home.identitas-desa')
 
             {{-- aparatur desa --}}
             @include('home.aparatur-desa')
 
+            {{-- lokasi desa --}}
+            @include('home.lokasi-desa')
+
+            {{-- lokasi kantor desa --}}
+            @include('home.lokasi-kantor-desa')
 
             <div class="card mb-3">
                 <div class="card-header bg-light d-flex justify-content-between align-items-center">

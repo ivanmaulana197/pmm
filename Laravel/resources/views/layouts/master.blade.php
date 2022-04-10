@@ -25,6 +25,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700%7cPoppins:300,400,500,600,700,800,900&amp;display=swap" rel="stylesheet" />
     <link href="{{ asset('/vendors/overlayscrollbars/OverlayScrollbars.min.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css" />
     <link href="{{ asset('/assets/css/theme-rtl.min.css') }}" rel="stylesheet" id="style-rtl" />
     <link href="{{ asset('/assets/css/theme.min.css') }}" rel="stylesheet" id="style-default" />
     <link href="{{ asset('/assets/css/user-rtl.min.css') }}" rel="stylesheet" id="user-style-rtl" />
@@ -50,6 +51,8 @@
                 {{-- content inti --}}
                 @yield('content')
 
+                {{-- transparansi anggaran --}}
+                @include('layouts/partials/transparansi-anggaran')
 
                 {{-- footer --}}
                 @include('layouts.partials.footer')

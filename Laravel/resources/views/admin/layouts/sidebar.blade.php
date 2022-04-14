@@ -13,8 +13,8 @@
             <a href="/" class="gambar">
                 <img src="https://tamiajeng.my.id/desa/logo/Desain__sid__fFcxJnC.png" alt="" width="40" />
             </a>
-            <a href="" class="desa"><span class="font-sans-serif" style="font-size: 16px;">Desa Tamiajeng</span></a>
-            <a href="">
+            <a href="/" class="desa"><span class="font-sans-serif" style="font-size: 16px;">Desa Tamiajeng</span></a>
+            <a href="/">
                 <p class="text-500 fs--2" style="line-height: 20%">Kecamatan Trawas</p>
             </a>
 
@@ -29,12 +29,12 @@
                 {{-- beranda --}}
                 <li class="nav-item">
                     <!-- parent pages-->
-                    <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="#" role="button" aria-expanded="false">
+                    <a class="nav-link {{ Request::is('admin') ? 'active' : '' }}" href="/admin" role="button" aria-expanded="false">
                         <div class="d-flex align-items-center">
                             <span class="nav-link-icon">
                                 <span class="fas fa-home"></span>
                             </span>
-                            <span class="nav-link-text ps-1">Beranda</span>
+                            <span class="nav-link-text ps-1">Dashboard</span>
                         </div>
                     </a>
                 </li>
@@ -48,27 +48,44 @@
                     </div>
                     <!-- parent pages-->
 
-                   @include('layouts.partials.sidebar.aparatur-desa')
-                    
-                   @include('layouts.partials.sidebar.profile-desa')
-                   @include('layouts.partials.sidebar.data-desa')
-                   @include('layouts.partials.sidebar.pemerintahan-desa')
-                   @include('layouts.partials.sidebar.regulasi')
-                    
                     <!-- parent pages-->
-                    <a class="nav-link" href="../app/chat.html" role="button" aria-expanded="false">
+                    <a class="nav-link dropdown-indicator" href="#pemerintahandesa" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="events">
                         <div class="d-flex align-items-center">
                             <span class="nav-link-icon">
-                                <span class="fas fa-store"></span>
+                                <span class=" fas fa-user-tie"></span>
                             </span>
-                            <span class="nav-link-text ps-1">Lapak Desa</span>
+                            <span class="nav-link-text ps-1">Info Desa</span>
                         </div>
                     </a>
+                    <ul class="nav collapse false" id="pemerintahandesa">
+                        <li class="nav-item">
+                            <a class="nav-link  {{ Request::is('admin/info-desa/identitas-desa') ? 'active' : '' }}" href="{{ route('identitas-desa') }}" aria-expanded="false">
+                                <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Identitas Desa</span>
+                                </div>
+                            </a>
+                            <!-- more inner pages-->
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link  {{ Request::is('admin/info-desa/pemerintahan-desa') ? 'active' : '' }}" href="{{ route('pemerintahan-desa') }}" aria-expanded="false">
+                                <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Pemerintahan Desa</span>
+                                </div>
+                            </a>
+                            <!-- more inner pages-->
+                        </li>
+                    </ul>
                     <!-- parent pages-->
-                    <a class="nav-link" href="../app/chat.html" role="button" aria-expanded="false">
+                    <a class="nav-link  {{ Request::is('admin/berita') ? 'active' : '' }}" href="/admin/berita" role="button" aria-expanded="false">
                         <div class="d-flex align-items-center">
                             <span class="nav-link-icon">
-                                <span class="fas fa-people-carry"></span>
+                                <span class="fas fa-comments"></span>
+                            </span>
+                            <span class="nav-link-text ps-1">Berita</span>
+                        </div>
+                    </a>
+                    <a class="nav-link {{ Request::is('admin/proyek-desa') ? 'active' : '' }}" href="../app/chat.html" role="button" aria-expanded="false">
+                        <div class="d-flex align-items-center">
+                            <span class="nav-link-icon">
+                                <span class="fas fa-comments"></span>
                             </span>
                             <span class="nav-link-text ps-1">Proyek Desa</span>
                         </div>

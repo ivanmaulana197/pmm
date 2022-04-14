@@ -19,7 +19,43 @@
                         <div class="card-body pb-1 pt-1" style="position: relative;text-align: center;">
                             <img src="https://tamiajeng.my.id/desa/themes/batuah_22_4_1/linkplus/icon/buku_tamu.png" class="img-fluid fit-cover rounded-1 absolute-sm-centered pb-2" style="max-width: 50px" alt="">
                             <h6 class="fw-semi-bold mb-0" style="position: relative; display: flex;justify-content: center">Imsak</h6>
-                            <span class="" style="font-size: 12px;position: relative; display: flex;justify-content: center">Buku Tamu</span>
+                            <span class="" style="font-size: 12px;position: relative; display: flex;justify-content: center">04.05</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4 col-sm-4 col-lg-2 mt-2 mb-2">
+                    <div class="card bg-400">
+                        <div class="card-body pb-1 pt-1" style="position: relative;text-align: center;">
+                            <img src="https://tamiajeng.my.id/desa/themes/batuah_22_4_1/linkplus/icon/buku_tamu.png" class="img-fluid fit-cover rounded-1 absolute-sm-centered pb-2" style="max-width: 50px" alt="">
+                            <h6 class="fw-semi-bold mb-0" style="position: relative; display: flex;justify-content: center">Imsak</h6>
+                            <span class="" style="font-size: 12px;position: relative; display: flex;justify-content: center">04.05</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4 col-sm-4 col-lg-2 mt-2 mb-2">
+                    <div class="card bg-400">
+                        <div class="card-body pb-1 pt-1" style="position: relative;text-align: center;">
+                            <img src="https://tamiajeng.my.id/desa/themes/batuah_22_4_1/linkplus/icon/buku_tamu.png" class="img-fluid fit-cover rounded-1 absolute-sm-centered pb-2" style="max-width: 50px" alt="">
+                            <h6 class="fw-semi-bold mb-0" style="position: relative; display: flex;justify-content: center">Subuh</h6>
+                            <span class="" style="font-size: 12px;position: relative; display: flex;justify-content: center">04.15</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4 col-sm-4 col-lg-2 mt-2 mb-2">
+                    <div class="card bg-400">
+                        <div class="card-body pb-1 pt-1" style="position: relative;text-align: center;">
+                            <img src="https://tamiajeng.my.id/desa/themes/batuah_22_4_1/linkplus/icon/buku_tamu.png" class="img-fluid fit-cover rounded-1 absolute-sm-centered pb-2" style="max-width: 50px" alt="">
+                            <h6 class="fw-semi-bold mb-0" style="position: relative; display: flex;justify-content: center">Dzuhur</h6>
+                            <span class="" style="font-size: 12px;position: relative; display: flex;justify-content: center">11.35</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4 col-sm-4 col-lg-2 mt-2 mb-2">
+                    <div class="card bg-400">
+                        <div class="card-body pb-1 pt-1" style="position: relative;text-align: center;">
+                            <img src="https://tamiajeng.my.id/desa/themes/batuah_22_4_1/linkplus/icon/buku_tamu.png" class="img-fluid fit-cover rounded-1 absolute-sm-centered pb-2" style="max-width: 50px" alt="">
+                            <h6 class="fw-semi-bold mb-0" style="position: relative; display: flex;justify-content: center">Imsak</h6>
+                            <span class="" style="font-size: 12px;position: relative; display: flex;justify-content: center">04.05</span>
                         </div>
                     </div>
                 </div>

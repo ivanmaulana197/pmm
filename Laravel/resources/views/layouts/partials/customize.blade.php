@@ -57,26 +57,7 @@
             </div>
         </div>
         <hr />
-        <div class="d-flex align-items-start"><img class="me-2" src="../assets/img/icons/paragraph.svg" width="20" alt="" />
-            <div class="flex-1">
-                <h5 class="fs-0 d-flex align-items-center">Navigation Position </h5>
-                <p class="fs--1 mb-2">Select a suitable navigation system for your web application </p>
-                <div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" id="option-navbar-vertical" type="radio" name="navbar" value="vertical" data-theme-control="navbarPosition" />
-                        <label class="form-check-label" for="option-navbar-vertical">Vertical</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" id="option-navbar-top" type="radio" name="navbar" value="top" data-theme-control="navbarPosition" />
-                        <label class="form-check-label" for="option-navbar-top">Top</label>
-                    </div>
-                    <div class="form-check form-check-inline me-0">
-                        <input class="form-check-input" id="option-navbar-combo" type="radio" name="navbar" value="combo" data-theme-control="navbarPosition" />
-                        <label class="form-check-label" for="option-navbar-combo">Combo</label>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
         <hr />
         <h5 class="fs-0 d-flex align-items-center">Vertical Navbar Style</h5>
         <p class="fs--1 mb-0">Switch between styles for your vertical navbar </p>

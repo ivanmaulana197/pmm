@@ -14,27 +14,6 @@
         </div>
     </a>
 
-    <div class="collapse navbar-collapse ms-5 scrollbar" id="navbarStandard">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link active" href="/" role="button" aria-haspopup="true" aria-expanded="false"
-                    id="Home">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/berita" role="button" aria-haspopup="true" aria-expanded="false"
-                    id="Berita">Berita</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/" role="button" aria-haspopup="true" aria-expanded="false"
-                    id="Berita">Pengaduan</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/about" role="button" aria-haspopup="true" aria-expanded="false"
-                    id="About">About</a>
-            </li>
-        </ul>
-    </div>
-
     <ul class="navbar-nav navbar-nav-icons ms-auto flex-row align-items-center">
         <ul class="navbar-nav align-items-center ms-auto d-none d-lg-block">
             <li class="nav-item">
@@ -66,6 +45,7 @@
             </div>
         </li>
 
+
         @auth
         <li class="nav-item dropdown"><a class="nav-link pe-0" id="navbarDropdownUser" href="#" role="button"
                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -76,9 +56,15 @@
             </a>
             <div class="dropdown-menu dropdown-menu-end py-0" aria-labelledby="navbarDropdownUser">
                 <div class="bg-white dark__bg-1000 rounded-2 py-2">
-                    <a class="dropdown-item" href="/admin">My Dashboard</a>
+
+
+                    <a class="dropdown-item" href="/">Beranda</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Logout</a>
+                    <form action="/logout" method="post">
+                        @csrf
+                        <button type="submit" class="dropdown-item"><i class="bi bi-box-arrow-right"></i> Logout</button>
+
+                    </form>
                 </div>
             </div>
         </li>

@@ -9,48 +9,64 @@
 
 @section('content')
 <div class="row g-3">
+    @if ($message = Session::get('success'))
+    <div class="alert alert-success alert-block">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <strong>{{ $message }}</strong>
+    </div>
+
+    @endif
     <div class="card">
         <div class="card-body">
             <nav style="--falcon-breadcrumb-divider: '»';" aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ route('admin', ) }}">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Info Desa</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Pemerintahan Desa</li>
+                    <li class="breadcrumb-item active" aria-current="page">Identitas Desa</li>
                 </ol>
             </nav>
         </div>
     </div>
     <div class="card">
         <div class="card-header">
-            <h5>Pemerintahan Desa</h5>
+            <h5>Identitas Desa</h5>
         </div>
         <div class="card-body">
-            <form action="">
+            <form action="{{ route('simpan-pemerintahan') }}" method="post" enctype="multipart/form-data">
+                @csrf
                 <div class="row  mb-3">
-                    <label class="col-sm-2 col-form-label" for="nama-desa">Nama Kepala Desa</label>
+                    <label class="col-sm-2 col-form-label" for="nama-desa">Nama Desa</label>
                     <div class="col-sm-10">
-                        <input name="kepaladesa" class="form-control" id="title" type="text" />
-                    </div>
-                </div>
-                <div class="row  mb-3">
-                    <label class="col-sm-2 col-form-label" for="nama-kabupaten">Kantor</label>
-                    <div class="col-sm-10">
-                        <input name="kantor" class="form-control" id="title" type="text" />
+                        <input class="form-control" id="title" type="text" name="namaKepalaDesa"
+                            value="{{ $pemerintahan->namaKepalaDesa }}" />
                     </div>
                 </div>
                 <div class="row  mb-3">
-                    <label class="col-sm-2 col-form-label" for="nama-provinsi">Telpon</label>
+                    <label class="col-sm-2 col-form-label" for="nama-kecamatan">Nama Kecamatan</label>
                     <div class="col-sm-10">
-                        <input name="telpon" class="form-control" id="title" type="text" />
+                        <input class="form-control" id="title" type="text" name="kantor"
+                            value="{{ $pemerintahan->kantor }}" />
                     </div>
                 </div>
-                <div class="row mb-3">
-                    <label class="col-sm-2 col-form-label" for="logo">Email</label>
+                <div class="row  mb-3">
+                    <label class="col-sm-2 col-form-label" for="nama-kabupaten">Nama Kabupaten</label>
                     <div class="col-sm-10">
-                        <input name="email" class="form-control" id="title" type="text" />
+                        <input class="form-control" id="title" type="text" name="telp"
+                            value="{{ $pemerintahan->telp }}" />
                     </div>
                 </div>
-                <button class="btn btn-primary me-2 mb-1" type="button">
+                <div class="row  mb-3">
+                    <label class="col-sm-2 col-form-label" for="nama-provinsi">Nama Provinsi</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" id="title" type="text" name="email"
+                            value="{{ $pemerintahan->email }}" />
+                    </div>
+                </div>
+                
+
+                <button class="btn btn-falcon-default me-2 mb-1" type="button">Default
+                </button>
+                <button class="btn btn-primary me-2 mb-1" type="submit">
                     <span class="fas fa-plus me-1" data-fa-transform="shrink-3"></span>Simpan
                 </button>
             </form>

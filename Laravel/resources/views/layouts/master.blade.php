@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css" />
     <link href="{{ asset('/assets/css/theme-rtl.min.css') }}" rel="stylesheet" id="style-rtl" />
     <link href="{{ asset('/assets/css/theme.min.css') }}" rel="stylesheet" id="style-default" />
+    <link href="{{ asset('vendors/glightbox/glightbox.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('/assets/css/user-rtl.min.css') }}" rel="stylesheet" id="user-style-rtl" />
     <link href="{{ asset('/assets/css/user.min.css') }}" rel="stylesheet" id="user-style-default" />
     <link href="{{ asset('/assets/css/style.css') }}" rel="stylesheet" />
@@ -76,6 +77,7 @@
     <script src="{{ asset('/vendors/bootstrap/bootstrap.min.js') }}"></script>
     <script src="{{ asset('/vendors/anchorjs/anchor.min.js') }}"></script>
     <script src="{{ asset('/vendors/is/is.min.js') }}"></script>
+    <script src="{{ asset('vendors/glightbox/glightbox.min.js') }}"></script>
     <script src="{{ asset('/vendors/fontawesome/all.min.js') }}"></script>
     <script src="{{ asset('/vendors/lodash/lodash.min.js') }}"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>

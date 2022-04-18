@@ -9,6 +9,13 @@
 
 @section('content')
 <div class="row g-3">
+    @if ($message = Session::get('success'))
+    <div class="alert alert-success alert-block">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <strong>{{ $message }}</strong>
+    </div>
+
+    @endif
     <div class="card">
         <div class="card-body">
             <nav style="--falcon-breadcrumb-divider: '»';" aria-label="breadcrumb">
@@ -25,41 +32,47 @@
             <h5>Identitas Desa</h5>
         </div>
         <div class="card-body">
-            <form action="">
+            <form action="{{ route('simpan-identitas') }}" method="post" enctype="multipart/form-data">
+                @csrf
                 <div class="row  mb-3">
                     <label class="col-sm-2 col-form-label" for="nama-desa">Nama Desa</label>
                     <div class="col-sm-10">
-                        <input class="form-control" id="title" type="text" />
+                        <input class="form-control" id="title" type="text" name="namaDesa"
+                            value="{{ $identitas->namaDesa }}" />
                     </div>
                 </div>
                 <div class="row  mb-3">
                     <label class="col-sm-2 col-form-label" for="nama-kecamatan">Nama Kecamatan</label>
                     <div class="col-sm-10">
-                        <input class="form-control" id="title" type="text" />
+                        <input class="form-control" id="title" type="text" name="namaKecamatan"
+                            value="{{ $identitas->namaKecamatan }}" />
                     </div>
                 </div>
                 <div class="row  mb-3">
                     <label class="col-sm-2 col-form-label" for="nama-kabupaten">Nama Kabupaten</label>
                     <div class="col-sm-10">
-                        <input class="form-control" id="title" type="text" />
+                        <input class="form-control" id="title" type="text" name="namaKabupaten"
+                            value="{{ $identitas->namaKabupaten }}" />
                     </div>
                 </div>
                 <div class="row  mb-3">
                     <label class="col-sm-2 col-form-label" for="nama-provinsi">Nama Provinsi</label>
                     <div class="col-sm-10">
-                        <input class="form-control" id="title" type="text" />
+                        <input class="form-control" id="title" type="text" name="namaProvinsi"
+                            value="{{ $identitas->namaProvinsi }}" />
                     </div>
                 </div>
                 <div class="row mb-3">
                     <label class="col-sm-2 col-form-label" for="logo">Logo Desa</label>
                     <div class="col-sm-10">
-                        <input class="form-control" id="logo" type="file" />
+                        <input class="form-control" id="logo" type="file" name="logo" />
+                        <img src="{{ asset('storage/logo/'.$identitas->logo) }}" alt="belum ada">
                     </div>
                 </div>
 
                 <button class="btn btn-falcon-default me-2 mb-1" type="button">Default
                 </button>
-                <button class="btn btn-primary me-2 mb-1" type="button">
+                <button class="btn btn-primary me-2 mb-1" type="submit">
                     <span class="fas fa-plus me-1" data-fa-transform="shrink-3"></span>Simpan
                 </button>
             </form>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
 
 class CategoryBeritaController extends Controller
@@ -67,6 +68,7 @@ class CategoryBeritaController extends Controller
      */
     public function update(Request $request, Category $category)
     {
+        // dd($request->slug);
         $category->update($request->all());
         return redirect('/admin/berita');
     }
@@ -77,8 +79,14 @@ class CategoryBeritaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        return redirect('admin/berita');
+    }
+
+    public function checkSlug(){
+        $slug = SlugService::createSlug(Category::class, 'slug', request('nama_category'));
+        return response()->json(['slug'=>$slug]);
     }
 }

@@ -11,21 +11,30 @@
                 </div> --}}
             <div class="carousel-inner light" style="border-radius: 30px;">
                 <div class="carousel-item active" data-bs-interval="4000">
-                    <img class="d-block w-100" src="{{ asset('assets/img/generic/5.jpg') }}" alt="First slide" />
+                    <a class="post1" href="{{ asset('assets/img/generic/5.jpg') }}" data-gallery="gallery-1">
+                        <img class="d-block w-100" src="{{ asset('assets/img/generic/5.jpg') }}" alt="First slide" />
+                      </a>
+                    {{-- <img class="d-block w-100" src="{{ asset('assets/img/generic/5.jpg') }}" alt="First slide" /> --}}
                     <div class="carousel-caption d-none d-md-block">
                         <h5 class="text-white">First Slide Heading</h5>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                     </div>
                 </div>
                 <div class="carousel-item" data-bs-interval="4000">
-                    <img class="d-block w-100" src="{{ asset('assets/img/chat/8.jpg') }}" alt="Second slide" />
+                    <a class="post1" href="{{ asset('assets/img/generic/8.jpg') }}" data-gallery="gallery-1">
+                        <img class="d-block w-100" src="{{ asset('assets/img/generic/8.jpg') }}" alt="Second slide" />
+                      </a>
+                    {{-- <img class="d-block w-100" src="{{ asset('assets/img/chat/8.jpg') }}" alt="Second slide" /> --}}
                     <div class="carousel-caption d-none d-md-block">
                         <h5 class="text-white">Second Slide Heading</h5>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                     </div>
                 </div>
                 <div class="carousel-item" data-bs-interval="4000">
-                    <img class="d-block w-100" src="{{ asset('assets/img/generic/9.jpg') }}" alt="Third slide" />
+                    <a class="post1" href="{{ asset('assets/img/generic/9.jpg') }}" data-gallery="gallery-1">
+                        <img class="d-block w-100" src="{{ asset('assets/img/generic/9.jpg') }}" alt="Second slide" />
+                      </a>
+                    {{-- <img class="d-block w-100" src="{{ asset('assets/img/generic/9.jpg') }}" alt="Third slide" /> --}}
                     <div class="carousel-caption d-none d-md-block">
                         <h5 class="text-white">Third Slide Heading</h5>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit</p>

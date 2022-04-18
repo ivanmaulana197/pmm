@@ -66,6 +66,13 @@
                             <!-- more inner pages-->
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link  {{ Request::is('admin/info-desa/aparatur') ? 'active' : '' }}" href="{{ route('aparatur.index') }}" aria-expanded="false">
+                                <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Aparatur Desa</span>
+                                </div>
+                            </a>
+                            <!-- more inner pages-->
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link  {{ Request::is('admin/info-desa/pemerintahan-desa') ? 'active' : '' }}" href="{{ route('pemerintahan-desa') }}" aria-expanded="false">
                                 <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Pemerintahan Desa</span>
                                 </div>

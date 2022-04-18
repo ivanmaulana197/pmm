@@ -17,12 +17,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('category_id');
             $table->foreignId('user_id');
-            $table->string('title');
-            $table->string('slug');
-            $table->text('excerpt');
-            $table->text('body');
+            $table->string('title')->unique();
+            $table->string('slug')->unique();
+            $table->longText('body');
             $table->string('status');
-            $table->timestamp('publish_at')->nullable();
             $table->integer('like')->default(0);
             $table->integer('see')->default(0);
             $table->timestamps();

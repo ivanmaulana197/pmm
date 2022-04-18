@@ -41,7 +41,8 @@
                             <a href="{{route('category.edit', $category->slug)}}"
                                 class="badge bg-warning text-decoration-none"><span class="bi bi-pencil"></span>
                                 Edit</a>
-                            <form action="#" method="POST" class="d-inline">
+                            <form action="{{ route('category.destroy', [$category->slug]) }}" method="POST"
+                                class="d-inline">
                                 @method('delete')
                                 @csrf
                                 <button class="badge bg-danger"><span class="bi bi-trash"></span> Delete</button>
@@ -55,7 +56,7 @@
     </div>
     <div class="card">
         <div class="card-header">
-            <h3>List Category</h3>
+            <h3>List Berita</h3>
         </div>
         <div class="card-body">
             <div class="mb-3">
@@ -64,11 +65,12 @@
                         <span class="fas fa-plus me-1" data-fa-transform="shrink-3"></span>Tambah Berita</button>
                 </a>
             </div>
-            <table class="data-table table table-striped" id="table1">
+            <table class="data-table table table-striped" id="table2">
                 <thead>
                     <tr>
                         <th>Judul</th>
                         <th>Kategori</th>
+                        <th>Status</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -78,12 +80,22 @@
                         <td>{{ $post->title }}</td>
                         <td>{{ $post->category->nama_category }}</td>
                         <td>
+                            @if ( $post->status == "Draft")
+                            <span class="badge badge-soft-warning">{{ $post->status }}</span>
+                            @else
+                            <span class="badge badge-soft-success">{{ $post->status }}</span>
+                            @endif
+                        </td>
+                        <td>
                             <a href="berita/{{ $post->slug }}" class="badge badge-soft-info">
                                 <i class="bi bi-eye"></i> Detail</a>
                             <a href="berita/edit/{{ $post->slug }}" class="badge badge-soft-warning">
                                 <i class="bi bi-pencil"></i>Edit</a>
-                            <a href="" class="badge bg-danger" type="button">
-                                <i class="bi bi-trash"></i>Hapus</a>
+                            <form action="{{ route('hapus-berita', [$post->slug]) }}" method="POST" class="d-inline">
+                                @method('delete')
+                                @csrf
+                                <button class="badge bg-danger"><span class="bi bi-trash"></span> Delete</button>
+                            </form>
                             {{-- <form action="#" method="POST">
                                 @method('delete')
                                 @csrf
@@ -100,6 +112,9 @@
 @endsection
 
 @section('js table')
+
+
+
 <script>
     // Simple Datatable
     let table1 = document.querySelector('#table1');

@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- ===============================================-->
     <!--    Document Title-->
     <!-- ===============================================-->
@@ -30,6 +30,7 @@
 
     <link href="{{ asset('/assets/css/theme-rtl.min.css') }}" rel="stylesheet" id="style-rtl" />
     <link href="{{ asset('/assets/css/theme.min.css') }}" rel="stylesheet" id="style-default" />
+    <link href="{{ asset('vendors/glightbox/glightbox.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('/vendors/simple-datatables/style.css') }}" rel="stylesheet" id="style-default" />
     <link href="{{ asset('/assets/css/user-rtl.min.css') }}" rel="stylesheet" id="user-style-rtl" />
     <link href="{{ asset('/assets/css/user.min.css') }}" rel="stylesheet" id="user-style-default" />
@@ -76,6 +77,7 @@
     <script src="{{ asset('/vendors/popper/popper.min.js') }}"></script>
     <script src="{{ asset('/vendors/bootstrap/bootstrap.min.js') }}"></script>
     <script src="{{ asset('/vendors/anchorjs/anchor.min.js') }}"></script>
+    <script src="{{ asset('vendors/glightbox/glightbox.min.js') }}"></script>
     <script src="{{ asset('/vendors/is/is.min.js') }}"></script>
     @yield('add-js')
     <script src="{{ asset('/vendors/simple-datatables/simple-datatables.js') }}"></script>

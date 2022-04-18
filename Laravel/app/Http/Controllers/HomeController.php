@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Berita;
+use App\Models\IdentitasDesa;
+use App\Models\PemerintahDesa;
 use App\Models\Post;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -14,7 +16,9 @@ class HomeController extends Controller
     {
         $data = Http::get('https://api.banghasan.com/sholat/format/json/jadwal/kota/776/tanggal/'.date("Y-m-d"))->json()['jadwal']['data'];
         $posts = Post::all();
-        return view('home', ['posts'=>$posts, 'data'=>$data]);
+        $identitas = IdentitasDesa::find(1);
+        $pemerintahan = PemerintahDesa::find(1);
+        return view('home', compact('data', 'posts', 'identitas', 'pemerintahan'));
     }
     public function about()
     {

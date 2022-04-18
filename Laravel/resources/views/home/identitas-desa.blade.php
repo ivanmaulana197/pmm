@@ -14,10 +14,13 @@
         </div>
         <div class="card mb-2">
             <div class="card-body overflow-hidden pt-0 pb-0">
-                <div class="collapse" id="identitasdesa">
-                    <div class="bg-dark">
-                        <span>sk</span>
-                    </div>
+                <div class="collapse mt-3" id="identitasdesa">
+                        
+                            <p class="mb-0">Nama Desa        : {{ $identitas->namaDesa }}</p>
+                            <p class="mb-0">Nama Kecamatan   : {{ $identitas->namaKecamatan }}</p>
+                            <p class="mb-0">Nama Kabupaten   : {{ $identitas->namaKabupaten }}</p>
+                            <p class="">Nama Provinsi    : {{ $identitas->namaProvinsi }}</p>
+                        
                 </div>
             </div>
         </div>

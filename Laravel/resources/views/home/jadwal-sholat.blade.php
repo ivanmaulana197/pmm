@@ -19,7 +19,7 @@
                     <div class="card bg-300">
                         <div class="card header bg-400">
                             <h6 class="fw-semi-bold mb-0"
-                                style="position: relative; display: flex;justify-content: center">Ashar</h6>
+                                style="position: relative; display: flex;justify-content: center">Imsyak</h6>
                         </div>
                         <div class="card-body pb-1 pt-1" style="position: relative;text-align: center;">
                             <img src="{{ asset('img/masjid.png') }}"
@@ -35,7 +35,7 @@
                     <div class="card bg-300">
                         <div class="card header bg-400">
                             <h6 class="fw-semi-bold mb-0"
-                                style="position: relative; display: flex;justify-content: center">Ashar</h6>
+                                style="position: relative; display: flex;justify-content: center">Subuh</h6>
                         </div>
                         <div class="card-body pb-1 pt-1" style="position: relative;text-align: center;">
                             <img src="{{ asset('img/masjid.png') }}"
@@ -51,7 +51,7 @@
                     <div class="card bg-300">
                         <div class="card header bg-400">
                             <h6 class="fw-semi-bold mb-0"
-                                style="position: relative; display: flex;justify-content: center">Ashar</h6>
+                                style="position: relative; display: flex;justify-content: center">Dzuhur</h6>
                         </div>
                         <div class="card-body pb-1 pt-1" style="position: relative;text-align: center;">
                             <img src="{{ asset('img/masjid.png') }}"
@@ -83,7 +83,7 @@
                     <div class="card bg-300">
                         <div class="card header bg-400">
                             <h6 class="fw-semi-bold mb-0"
-                                style="position: relative; display: flex;justify-content: center">Ashar</h6>
+                                style="position: relative; display: flex;justify-content: center">Maghrib</h6>
                         </div>
                         <div class="card-body pb-1 pt-1" style="position: relative;text-align: center;">
                             <img src="{{ asset('img/masjid.png') }}"
@@ -99,7 +99,7 @@
                     <div class="card bg-300">
                         <div class="card header bg-400">
                             <h6 class="fw-semi-bold mb-0"
-                                style="position: relative; display: flex;justify-content: center">Ashar</h6>
+                                style="position: relative; display: flex;justify-content: center">Isya</h6>
                         </div>
                         <div class="card-body pb-1 pt-1" style="position: relative;text-align: center;">
                             <img src="{{ asset('img/masjid.png') }}"

@@ -29,7 +29,7 @@
             <h5>Tambah Berita</h5>
         </div>
         <div class="card-body">
-            {{-- <form action="{{ route('simpan-berita') }}" method="post" enctype="multipart/form-data"> --}}
+            <form action="{{ route('simpan-berita') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="row mb-3">
                     <label class="col-sm-2 col-form-label" for="title">Judul</label>

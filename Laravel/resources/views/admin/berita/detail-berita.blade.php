@@ -27,7 +27,7 @@
           <button type="button" data-bs-target="#controlStyledExample" data-bs-slide-to="{{ $i }}" aria-current="true"
             aria-label="Slide {{ $i }}"></button>
           @endif
-
+ 
           @endforeach
 
         </div>
@@ -35,26 +35,26 @@
           @foreach ($post->multipleImage as $i=>$image)
           @if ($i==0)
           <div class="carousel-item active">
-            <a class="post1" href="{{ asset('storage/thumbnail/'.$image->path) }}" data-gallery="gallery-1">
-              <img class="card-img-top" src="{{ asset('storage/thumbnail/'.$image->path) }}" alt="" />
+            <a class="post1" href="{{ $image->path }}" data-gallery="gallery-1">
+              <img class="card-img-top" src="{{ $image->path }}" alt="" />
             </a>
           </div>
           @else
           <div class="carousel-item">
-            <a class="post1" href="{{ asset('storage/thumbnail/'.$image->path) }}" data-gallery="gallery-1">
-              <img class="card-img-top" src="{{ asset('storage/thumbnail/'.$image->path) }}" alt="" />
+            <a class="post1" href="{{ $image->path }}" data-gallery="gallery-1">
+              <img class="card-img-top" src="{{ $image->path }}" alt="" />
             </a>
           </div>
           @endif
           @endforeach
 
-          <button class="carousel-control-prev" type="button" data-bs-target="#controlStyledExample"
-            data-bs-slide="prev">
-            <span class="fas fa-angle-left"></span> <span class="sr-only">Previous</span> </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#controlStyledExample"
-            data-bs-slide="next">
-            <span class="fas fa-angle-right"></span><span class="sr-only">Next</span> </button>
         </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#controlStyledExample"
+          data-bs-slide="prev">
+          <span class="fas fa-angle-left"></span> <span class="sr-only">Previous</span> </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#controlStyledExample"
+          data-bs-slide="next">
+          <span class="fas fa-angle-right"></span><span class="sr-only">Next</span> </button>
 
       </div>
 
@@ -90,7 +90,7 @@
         <div class="mb-3">
           <a href="{{ route('berita') }}" class="btn btn-falcon-default me-1 mb-1">
             <i class="fas fa-arrow-left"></i> Kembali</a>
-          <a href="berita/edit/{{ $post->slug }}" class="btn btn-warning me-1 mb-1">
+          <a href="edit/{{ $post->slug }}" class="btn btn-warning me-1 mb-1">
             <i class="bi bi-pencil"></i> Edit</a>
           <form action="{{ route('hapus-berita', [$post->slug]) }}" method="POST" class="d-inline">
             @method('delete')

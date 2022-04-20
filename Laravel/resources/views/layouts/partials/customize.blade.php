@@ -44,18 +44,7 @@
                 <input class="form-check-input ms-0" id="mode-rtl" type="checkbox" data-theme-control="isRTL" />
             </div>
         </div>
-        <hr />
-        <div class="d-flex justify-content-between">
-            <div class="d-flex align-items-start"><img class="me-2" src="../assets/img/icons/arrows-h.svg" width="20" alt="" />
-                <div class="flex-1">
-                    <h5 class="fs-0">Fluid Layout</h5>
-                    <p class="fs--1 mb-0">Toggle container layout system </p>
-                </div>
-            </div>
-            <div class="form-check form-switch">
-                <input class="form-check-input ms-0" id="mode-fluid" type="checkbox" data-theme-control="isFluid" />
-            </div>
-        </div>
+        
         <hr />
         
         <hr />

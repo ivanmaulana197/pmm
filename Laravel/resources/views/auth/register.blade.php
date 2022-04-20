@@ -49,9 +49,9 @@
     <!--    Main Content-->
     <!-- ===============================================-->
     <main class="main" id="top">
-        <div class="container" data-layout="container">
+        <div class="container-fluid" data-layout="container">
             {{-- script isFluid --}}
-            @include('layouts.partials.scr.fluid')
+            
 
             @if (session()->has('loginError'))
             <div class="alert alert-warning border-2 d-flex align-items-center mt-3" role="alert">

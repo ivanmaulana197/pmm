@@ -22,7 +22,7 @@
                                 style="position: relative; display: flex;justify-content: center">Imsyak</h6>
                         </div>
                         <div class="card-body pb-1 pt-1" style="position: relative;text-align: center;">
-                            <img src="{{ asset('img/masjid.png') }}"
+                            <img class="" src="{{ asset('img/masjid.png') }}"
                                 class="img-fluid fit-cover rounded-1 absolute-sm-centered pb-2" style="max-width: 50px"
                                 alt="">
                             <span class=""

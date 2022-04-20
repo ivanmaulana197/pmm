@@ -25,7 +25,7 @@
                     id="Berita">Berita</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/" role="button" aria-haspopup="true" aria-expanded="false"
+                <a class="nav-link" href="{{ route('pengaduan-home') }}" role="button" aria-haspopup="true" aria-expanded="false"
                     id="Berita">Pengaduan</a>
             </li>
             <li class="nav-item">

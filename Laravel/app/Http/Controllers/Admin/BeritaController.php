@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 // use Intervenion\Image\Facades\Image;
 use Path\To\DOMDocument;
 // use Intervention\Image\ImageManagerStatic as Image;
-
+use App\Http\Controllers\CloudinaryStorage;
 use Illuminate\Support\Facades\Auth;
 use PhpParser\Parser\Multiple;
 
@@ -65,10 +65,12 @@ class BeritaController extends Controller
 
     // }
     public function upload(Request $request){
-        $fileName=$request->file('file')->getClientOriginalName();
-        $path=$request->file('file')->storeAs('uploads', $fileName, 'public');
-        
-        return response()->json(['location'=>asset("../storage/$path")]); 
+        // $fileName=$request->file('file')->getClientOriginalName();
+        // $path=$request->file('file')->storeAs('uploads', $fileName, 'public');
+        // return response()->json(['location'=>asset("../storage/$path")]); 
+        $image  = $request->file('file');
+        $result = CloudinaryStorage::upload($image->getRealPath(), $image->getClientOriginalName());
+        return response()->json(['location'=>$result]); 
         
         
         // $imgpath = request()->file('file')->store('uploads', 'public'); 
@@ -89,11 +91,12 @@ class BeritaController extends Controller
             'title' => 'required|unique:posts|max:255',
             'body' => 'required',
             'category_id' => 'required',
+            // 'gambar' => 'image|mimes:jpeg,png,jpg,gif,svg',
             'status' => 'required',
         ]);
 
-        $slug = SlugService::createSlug(Category::class, 'slug', $request->title);
-
+        $slug = SlugService::createSlug(Post::class, 'slug', $request->title);
+        
         $data = Post::create([
             'title' => $request->title,
             'status' => $request->status,
@@ -106,11 +109,12 @@ class BeritaController extends Controller
 
         if($request->has('gambar')){
             foreach($request->file('gambar') as $gambar){
-                $file_name = time().'.'.$gambar->getClientOriginalName();
-                $gambar->storeAs('thumbnail', $file_name);
+                // $file_name = time().'.'.$gambar->getClientOriginalName();
+                // $gambar->storeAs('thumbnail', $file_name);
+                $image = CloudinaryStorage::upload($gambar->getRealPath(), $gambar->getClientOriginalName());
                 MultipleImage::create([
                     'post_id' => $data->id,
-                    'path' => $file_name,
+                    'path' => $image,
                 ]);
             }
         }
@@ -143,8 +147,10 @@ class BeritaController extends Controller
     public function edit(Post $post)
     {
         $categories = Category::all();
+        $images = MultipleImage::where('post_id',$post->id)->get();
         return view('admin.berita.edit-berita', [
             'post'=> $post,
+            'images'=>$images,
             'categories'=>$categories
         ]);
     }
@@ -158,7 +164,13 @@ class BeritaController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-       
+        $validated = $request->validate([
+            'title' => 'required|max:255',
+            'body' => 'required',
+            'category_id' => 'required',
+            'gambar' => 'image|mimes:jpeg,png,jpg,gif,svg',
+            'status' => 'required',
+        ]);
 
         $slug = SlugService::createSlug(Category::class, 'slug', $request->title);
 
@@ -166,20 +178,31 @@ class BeritaController extends Controller
             'title' => $request->title,
             'status' => $request->status,
             'category_id' => $request->category_id,
-            // 'bosy' => $request->body,
             'body' => $request->body,
             'slug' => $slug,
             'user_id' => Auth::user()->id,
         ]);
         if($request->has('gambar')){
+            $images = MultipleImage::where('post_id',$post->id)->get();
+            foreach($images as $image){
+                CloudinaryStorage::delete($image->path);
+                $image->delete();
+            }
             foreach($request->file('gambar') as $gambar){
-                $filename = time().'.'. $gambar->exetension();
-                $file_name = $gambar->getClientOriginalName();
-                $gambar->storeAs('thumbnail', $file_name);
+                // $filename = time().'.'. $gambar->exetension();
+                // $file_name = $gambar->getClientOriginalName();
+                // $gambar->storeAs('thumbnail', $file_name);
+                // MultipleImage::create([
+                //     'post_id' => $post->id,
+                //     'path' => $result,
+                // ]);
+                
+                $image = CloudinaryStorage::upload($gambar->getRealPath(), $gambar->getClientOriginalName());
                 MultipleImage::create([
-                    'post_id' => 1,
-                    'path' => $file_name,
+                    'post_id' => $post->id,
+                    'path' => $image,
                 ]);
+                
             }
         }
         return redirect(route('berita'));
@@ -193,6 +216,11 @@ class BeritaController extends Controller
      */
     public function destroy(Post $post)
     {
+        $images = MultipleImage::where('post_id',$post->id)->get();
+        foreach($images as $image){
+            CloudinaryStorage::delete($image->path);
+            $image->delete();
+        }
         $post->delete();
         return redirect(route('berita'));
     }

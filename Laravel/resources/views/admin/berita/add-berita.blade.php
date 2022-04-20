@@ -152,9 +152,6 @@
 
                 </script>
 
-
-
-
                 <div class="row mb-3">
                     <label class="col-sm-2 col-form-label" for="body">Isi Berita</label>
                     <div class="col-md-10">
@@ -163,6 +160,7 @@
                         </div>
                     </div>
                 </div>
+                
                 <div class="row mb-3">
                     <label class="col-sm-2 col-form-label" for="status">Inputkan poster anda</label>
                     <div class="col-md-6">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\CloudinaryStorage;
 use App\Http\Controllers\Controller;
 use App\Models\AparaturDesa;
 use App\Models\IdentitasDesa;
@@ -23,18 +24,9 @@ class InfoDesaController extends Controller
             'namaKecamatan' => 'required',
             'namaKabupaten' => 'required',
             'namaProvinsi' => 'required',
-            'nama' => 'image|mimes:jpeg,png,jpg,gif,svg',
+            'logo' => 'image|mimes:jpeg,png,jpg,gif,svg',
         ]);
-        if($request->has('logo')){
-            // $destination = 'storage/logo/'.$updateAparatur->gambar;
-            // if(File::exists($destination)){
-            //     File::delete($destination);
-            // }
-            $imageName = time().'.'.$request->logo->extension(); 
-            $request->logo->storeAs('logo', $imageName);
-            // $updateAparatur->gambar = $imageName;
-
-        }
+        
        
         $updateIdentitas = IdentitasDesa::find(1);
         $updateIdentitas->namaDesa = $request->namaDesa;
@@ -42,13 +34,9 @@ class InfoDesaController extends Controller
         $updateIdentitas->namaKabupaten = $request->namaKabupaten;
         $updateIdentitas->namaProvinsi = $request->namaProvinsi;
         if($request->has('logo')){
-            $destination = 'storage/logo/'.$updateIdentitas->logo;
-            if(File::exists($destination)){
-                File::delete($destination);
-            }
-            $imageName = time().'.'.$request->logo->extension(); 
-            $request->logo->storeAs('logo', $imageName);
-            $updateIdentitas->logo = $imageName;
+            $result = CloudinaryStorage::replace($updateIdentitas->logo, $request->logo->getRealPath(), $request->logo->getClientOriginalName());
+            
+            $updateIdentitas->logo = $result;
 
         }
         $updateIdentitas->update();

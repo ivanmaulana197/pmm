@@ -2,7 +2,13 @@
 
 
 @section('add-css')
+
+<link href="{{ asset('vendors/choices/choices.min.css') }}" rel="stylesheet" />
 <link href="{{ asset('vendors/dropzone/dropzone.min.css') }}" rel="stylesheet">
+{{--
+<link href="{{ asset('vendors/summernote/summernote.min.css') }}" rel="stylesheet"> --}}
+{{--
+<link href="{{ asset('vendors/prism/prism-okaidia.css') }}" rel="stylesheet"> --}}
 @endsection
 
 @section('content')
@@ -24,7 +30,7 @@
         </div>
         <div class="card-body">
             <form action="{{ route('update-berita', $post->slug) }}" method="post" enctype="multipart/form-data">
-
+                @method('PUT')
                 @csrf
                 <div class="row mb-3">
                     <label class="col-sm-2 col-form-label" for="title">Judul</label>
@@ -56,18 +62,141 @@
                     <label class="col-sm-2 col-form-label" for="gambar">Gambar berita</label>
                     <div class="col-md-10">
                         <div class="mb-3">
+                            <input class="form-control" id="gambar" name="gambar[]" type="file" multiple='multiple'
+                                onchange="previewImage()" />
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label" for="preview">Preview gambar</label>
 
-                            <input class="form-control" id="gambar" name="gambar[]" type="file" multiple='multiple' />
+                        {{-- <img class="preview-img img-fluid"> --}}
+                        <div class=" preview-img col-md-5 carousel slide carousel-fade" id="controlStyledExample"
+                            data-ride="carousel">
+                            {{-- <div class="carousel-indicators cindi">
+                                <button class="active" type="button" data-bs-target="#controlStyledExample"
+                                    data-bs-slide-to="0" aria-current="true" aria-label="Slide 1"></button>
+                                <button type="button" data-bs-target="#controlStyledExample" data-bs-slide-to="1"
+                                    aria-label="Slide 2"></button>
+                                <button type="button" data-bs-target="#controlStyledExample" data-bs-slide-to="2"
+                                    aria-label="Slide 3"></button>
+                            </div>
+                            <div class="carousel-inner rounded cinn">
+                                <div class="carousel-item active">
+                                    <a class="post1" href="{{ asset('assets/img/generic/5.jpg') }}"
+                                        data-gallery="gallery-1">
+                                        <img class="d-block w-100" src="{{ asset('assets/img/generic/5.jpg') }}"
+                                            alt="First slide" />
+                                    </a>
+                                </div>
+                                <div class="carousel-item">
+                                    <a class="post1" href="{{ asset('assets/img/generic/7.jpg') }}"
+                                        data-gallery="gallery-1">
+                                        <img class="d-block w-100" src="{{ asset('assets/img/generic/7.jpg') }}"
+                                            alt="First slide" />
+                                    </a>
+                                </div>
+                                <div class="carousel-item">
+                                    <a class="post1" href="{{ asset('assets/img/generic/8.jpg') }}"
+                                        data-gallery="gallery-1">
+                                        <img class="d-block w-100" src="{{ asset('assets/img/generic/8.jpg') }}"
+                                            alt="First slide" />
+                                    </a>
+                                </div>
+                            </div> --}}
+                            {{-- --}}
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label" for="gambar">Gambar</label>
+                        <div class="col-md-5 carousel slide carousel-fade" id="carouselExampleCaptions"
+                            data-ride="carousel">
+                            <div class="carousel-inner light" style="border-radius: 30px;">
+                                @foreach($post->multipleImage as $i=>$image)
+                                @if ($i==0)
+                                <div class="carousel-item active">
+                                    <a class="post1" href="{{ $image->path }}" data-gallery="gallery-1">
+                                        <img class="card-img-top" src="{{ $image->path }}" alt="" />
+                                    </a>
+                                </div>
+                                @else
+                                <div class="carousel-item">
+                                    <a class="post1" href="{{$image->path }}" data-gallery="gallery-1">
+                                        <img class="card-img-top" src="{{ $image->path }}" alt="" />
+                                    </a>
+                                </div>
+                                @endif
+                                @endforeach
+                            </div>
+                            <button class="carousel-control-prev" type="button"
+                                data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button"
+                                data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </button>
                         </div>
                     </div>
                 </div>
+
+
+                <script>
+                    function previewImage(){
+                        const image = document.querySelector('#gambar');
+                        const imgPreview = document.querySelector('.preview-img');
+                        let cIndicator = document.createElement('div');
+                        cIndicator.className = 'carousel-indicators';
+                        let cInner = document.createElement('div');
+                        cInner.className = 'carousel-inner';
+                        imgPreview.appendChild(cIndicator);
+                        imgPreview.appendChild(cInner);
+                        for (let i = 0; i< image.files.length;i++){
+                            let reader = new FileReader();
+                            let btn = document.createElement('button');
+                            if (i==0){
+
+                                btn.className = 'active';
+                            }
+                            btn.type = 'button';
+                            btn.setAttribute('data-bs-target','#controlStyledExample');
+                            btn.setAttribute('data-bs-slide-to',i);
+                            btn.setAttribute('aria-current','true');
+                            btn.setAttribute('aria-label','Slide '+i);
+                            cIndicator.appendChild(btn);
+                            let item = document.createElement('div');
+                            item.className = "carousel-item";
+                            if(i==0){
+                                item.className += ' active';
+                            }  
+                            reader.onload=()=>{
+                                let a = document.createElement('a');
+                                a.href = reader.result;
+                                a.setAttribute('data-gallery',"gallery-1");
+                                let img = document.createElement('img');
+                                img.className = 'd-block w-100';
+                                img.src = reader.result;
+                                a.appendChild(img);
+                                item.appendChild(a);
+                            }
+                            cInner.appendChild(item);
+                            reader.readAsDataURL(image.files[i]);
+                        }
+
+                        // imgPreview.innerHTML += '<button class="carousel-control-prev" type="button" data-bs-target="#controlStyledExample" data-bs-slide="prev"> <span class="fas fa-angle-left"></span> <span class="sr-only">Previous</span> </button> <button class="carousel-control-next" type="button" data-bs-target="#controlStyledExample" data-bs-slide="next"> <span class="fas fa-angle-right"></span><span class="sr-only">Next</span> </button>';
+                        
+                    }
+
+
+                </script>
 
                 <div class="row mb-3">
                     <label class="col-sm-2 col-form-label" for="body">Isi Berita</label>
                     <div class="col-md-10">
                         <div class="min-vh-50">
                             <textarea id="body" class="form-control tinymce" name="body">
-                                {!! $post->body !!}
+                                {!! $post->body !!} 
                             </textarea>
                         </div>
                     </div>
@@ -104,6 +233,7 @@
 @endsection
 
 @section('add-js')
+<script src="{{ asset('vendors/choices/choices.min.js') }}"></script>
 <script src="{{ asset('vendors/tinymce/tinymce.min.js') }}"></script>
 
 <script>
@@ -169,13 +299,11 @@
 
                     var reader = new FileReader();
                     reader.readAsDataURL(file);
-                    console.log(file);
                     reader.onload = function () {
                         var id = 'blobid' + (new Date()).getTime();
                         var blobCache =  tinymce.activeEditor.editorUpload.blobCache;
                         var base64 = reader.result.split(',')[1];
                         var blobInfo = blobCache.create(id, file, base64);
-                        console.log(blobCache);
                         blobCache.add(blobInfo);
                         cb(blobInfo.blobUri(), { title: file.name });
                     };
@@ -185,4 +313,31 @@
   });
     
 </script>
+
+
+{{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="{{ asset('vendors/summernote/summernote.min.js') }}"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#summernote').summernote({
+        toolbar: [
+            // [groupName, [list of button]]
+            ['style', ['bold', 'italic', 'underline', 'clear']],
+            ['font', ['strikethrough', 'superscript', 'subscript']],
+            ['fontsize', ['fontsize']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['height', ['height']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen', 'codeview', 'help']],
+        ],
+        height: 400,
+        popatmouse:true,
+    });
+    })
+</script> --}}
+{{-- <script src="{{ asset('vendors/dropzone/dropzone.min.js') }}"></script>
+<script src="{{ asset('vendors/prism/prism.js') }}"></script> --}}
 @endsection

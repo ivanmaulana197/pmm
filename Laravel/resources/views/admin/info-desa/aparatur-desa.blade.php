@@ -88,9 +88,9 @@
                         <td>{{ $aparatur->nama }}</td>
                         <td>{{ $aparatur->jabatan }}</td>
                         <td>
-                            <a class="col-sm-4" href="{{ asset('storage/aparatur/'.$aparatur->gambar) }}"
+                            <a class="col-sm-4" href="{{ $aparatur->gambar }}"
                                 data-gallery="gallery-{{ $aparatur->id }}">
-                                <img src="{{ asset('storage/aparatur/'.$aparatur->gambar) }}"
+                                <img src="{{ $aparatur->gambar }}"
                                     class="img-fluid img-thumbnail" alt="" width="160">
                             </a>
                         </td>
@@ -128,21 +128,24 @@
                                             <div class="p-4 pb-0">
                                                 <div class="mb-3">
                                                     <label class="col-form-label" for="nama">Nama:</label>
-                                                    <input class="form-control" id="nama" type="text" name="nama"
+                                                    <input class="form-control @error('nama') is-invalid @enderror" id="nama" type="text" name="nama"
                                                         value="{{ $aparatur->nama }}" />
+                                                        <small class="text-danger">@error('nama') {{$message}} @enderror</small>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label class="col-form-label" for="jabatan">Jabatan:</label>
-                                                    <input class="form-control" id="jabatan" type="text" name="jabatan"
+                                                    <input class="form-control  @error('jabatan') is-invalid @enderror" id="jabatan" type="text" name="jabatan"
                                                         value="{{ $aparatur->jabatan }}" />
+                                                        <small class="text-danger">@error('jabatan') {{$message}} @enderror</small>
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label class="col-form-label" for="foto">Foto:</label>
-                                                    <input type="file" class="form-control" id="foto" name="gambar">
+                                                    <label class="col-form-label" for="gambar">Foto:</label>
+                                                    <input type="file" class="form-control @error('gambar') is-invalid @enderror" id="gambar" name="gambar">
+                                                    <small class="text-danger">@error('gambar') {{$message}} @enderror</small>
                                                     <a class="col-sm-4"
                                                         href="{{ asset('storage/aparatur/'.$aparatur->gambar) }}"
                                                         data-gallery="gallery-{{ $aparatur->id }}">
-                                                        <img src="{{ asset('storage/aparatur/'.$aparatur->gambar) }}"
+                                                        <img src="{{ $aparatur->gambar }}"
                                                             class="img-fluid img-thumbnail" alt="" width="200">
                                                     </a>
                                                 </div>

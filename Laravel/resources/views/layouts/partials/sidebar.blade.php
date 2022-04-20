@@ -10,10 +10,10 @@
         </div>
 
         <div class="navbar-brand py-2">
-            <a href="/" class="gambar">
+            <a href="{{ route('home') }}" class="gambar">
                 <img src="https://tamiajeng.my.id/desa/logo/Desain__sid__fFcxJnC.png" alt="" width="40" />
             </a>
-            <a href="" class="desa"><span class="font-sans-serif" style="font-size: 16px;">Desa Tamiajeng</span></a>
+            <a href="{{ route('home', []) }}" class="desa"><span class="font-sans-serif" style="font-size: 16px;">Desa Tamiajeng</span></a>
             <a href="">
                 <p class="text-500 fs--2" style="line-height: 20%">Kecamatan Trawas</p>
             </a>

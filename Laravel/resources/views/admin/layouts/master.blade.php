@@ -42,9 +42,8 @@
 <body>
 
     <main class="main " id="top">
-        <div class="container" data-layout="container">
-            {{-- script isFluid --}}
-            @include('layouts.partials.scr.fluid')
+        <div class="container-fluid" data-layout="container">
+         
 
             {{-- Sidebar --}}
             @include('admin.layouts.sidebar')

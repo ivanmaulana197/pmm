@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\AparaturDesa;
-
+use App\Http\Controllers\CloudinaryStorage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -44,14 +44,14 @@ class AparaturDesaController extends Controller
             'jabatan' => 'required',
             'gambar' => 'image|mimes:jpeg,png,jpg,gif,svg',
         ]);
-
-        $imageName = time().'.'.$request->gambar->extension(); 
-        $request->gambar->storeAs('aparatur', $imageName); 
+        $image = CloudinaryStorage::upload($request->gambar->getRealPath(), $request->gambar->getClientOriginalName());
+        // $imageName = time().'.'.$request->gambar->extension(); 
+        // $request->gambar->storeAs('aparatur', $imageName); 
         
         AparaturDesa::create([
             'nama' => $request->nama,
             'jabatan' => $request->jabatan,
-            'gambar' => $imageName
+            'gambar' => $image
         ]);
 
         return back()
@@ -94,14 +94,15 @@ class AparaturDesaController extends Controller
         $updateAparatur->nama = $request->nama;
         $updateAparatur->jabatan = $request->jabatan;
         if($request->has('gambar')){
-            $destination = 'storage/aparatur/'.$updateAparatur->gambar;
-            if(File::exists($destination)){
-                File::delete($destination);
-            }
-            $imageName = time().'.'.$request->gambar->extension(); 
-            $request->gambar->storeAs('aparatur', $imageName);
-            $updateAparatur->gambar = $imageName;
-
+            // $destination = 'storage/aparatur/'.$updateAparatur->gambar;
+            // if(File::exists($destination)){
+            //     File::delete($destination);
+            // }
+            // $imageName = time().'.'.$request->gambar->extension(); 
+            // $request->gambar->storeAs('aparatur', $imageName);
+            // $updateAparatur->gambar = $imageName;
+            $result = CloudinaryStorage::replace($updateAparatur->gambar, $request->gambar->getRealPath(), $request->gambar->getClientOriginalName());
+            $updateAparatur->gambar = $result;
         }
         $updateAparatur->update();
         return back();
@@ -116,10 +117,11 @@ class AparaturDesaController extends Controller
     public function destroy($id)
     {
         $apar = AparaturDesa::find($id);
-        $destination = 'storage/aparatur/'.$apar->gambar;
-            if(File::exists($destination)){
-                File::delete($destination);
-            }
+        // $destination = 'storage/aparatur/'.$apar->gambar;
+        //     if(File::exists($destination)){
+        //         File::delete($destination);
+        //     }
+        CloudinaryStorage::delete($apar->gambar);
         AparaturDesa::destroy($id);
         return back();
     }

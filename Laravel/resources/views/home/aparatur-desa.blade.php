@@ -15,27 +15,25 @@
         </div>
         <div class="carousel slide carousel-fade" id="aparaturdesa" data-ride="carousel">
             <div class="carousel-inner light" style="border-radius: 10px;">
+            @foreach($aparaturs as $i=>$aparatur)
+            @if($i==0)
                 <div class="carousel-item active" data-bs-interval="2000">
-                    <img class="d-block w-100" src="{{ asset('assets/img/team/24.jpg') }}" alt="First slide" />
+                    <img class="d-block w-100" src="{{ $aparatur->gambar }}"  alt="First slide" />
                     <div class="carousel-caption d-none d-md-block">
-                        <h5 class="text-white">First Slide Heading</h5>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                        <h4 class="text-white">{{ $aparatur->nama }}</h4>
+                        <p>{{ $aparatur->jabatan }}</p>
                     </div>
                 </div>
+            @else
                 <div class="carousel-item" data-bs-interval="2000">
-                    <img class="d-block w-100" src="{{ asset('assets/img/team/25.jpg') }}" alt="Second slide" />
+                    <img class="d-block w-100" src="{{ $aparatur->gambar }}"  alt="Second slide" />
                     <div class="carousel-caption d-none d-md-block">
-                        <h5 class="text-white">Second Slide Heading</h5>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                        <h4 class="text-white">{{ $aparatur->nama }}</h4>
+                        <p>{{ $aparatur->jabatan }}</p>
                     </div>
                 </div>
-                <div class="carousel-item" data-bs-interval="2000">
-                    <img class="d-block w-100" src="{{ asset('assets/img/generic/9.jpg') }}" alt="Third slide" />
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5 class="text-white">Third Slide Heading</h5>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
-                    </div>
-                </div>
+            @endif
+            @endforeach
             </div>
         </div>
     </div>

@@ -3,13 +3,16 @@
 use App\Http\Controllers\Admin\AparaturDesaController;
 use App\Http\Controllers\Admin\BeritaController as AdminBeritaController;
 use App\Http\Controllers\Admin\CategoryBeritaController;
+use App\Http\Controllers\Admin\CategoryLapakDesaController;
 use App\Http\Controllers\Admin\InfoDesaController;
+use App\Http\Controllers\Admin\LapakDesaController;
+use App\Http\Controllers\Admin\ProyekDesaController;
 use App\Http\Controllers\AdminController;
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\HomeController;
-
+use App\Models\CategoryLapakDesa;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,14 +27,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/',[HomeController::class, 'home']);
+Route::get('/',[HomeController::class, 'home'])->name('home');
 Route::get('/about',[HomeController::class, 'about']);
-Route::get('/coba',[HomeController::class, 'date']);
+Route::get('/pengaduan',[HomeController::class, 'pengaduan'])->name('pengaduan-home');
+Route::post('/pengaduan',[HomeController::class, 'storePengaduan'])->name('submit-pengaduan-home');
 
 
 
 Route::get('/berita',[BeritaController::class, 'index']);
-Route::get('/berita/{slug}',[BeritaController::class, 'show']);
+Route::get('/berita/{post:slug}',[BeritaController::class, 'show'])->name('detail-berita-home');
 
 Route::get('/login',[AuthController::class, 'login'])->name('login');
 Route::post('/login',[AuthController::class, 'authenticate']);
@@ -44,6 +48,8 @@ Route::post('/logout',[AuthController::class, 'logout']);
 Route::middleware('auth')->group(function(){
     Route::prefix('admin')->group(function(){
         Route::get('/',[AdminController::class, 'index'])->name('admin');
+        Route::get('/pengaduan',[AdminController::class, 'pengaduan'])->name('pengaduan');
+        Route::post('/pengaduan/{post:id}',[AdminController::class, 'updatePengaduan'])->name('updatePengaduan');
         
         Route::prefix('info-desa')->group(function(){
             Route::resource('aparatur', AparaturDesaController::class);
@@ -53,11 +59,11 @@ Route::middleware('auth')->group(function(){
             Route::post('/pemerintahan-desa',[InfoDesaController::class, 'storePemerintahan'])->name('simpan-pemerintahan');
     
         });
-
+        
         Route::prefix('berita')->group(function(){
             Route::get('/',[AdminBeritaController::class, 'index'])->name('berita');
             Route::get('/add',[AdminBeritaController::class, 'create'])->name('add-berita');
-            Route::get('/tes',[AdminBeritaController::class, 'tes'])->name('tes-berita');
+            
             Route::post('/upload',[AdminBeritaController::class, 'upload'])->name('uplod');
             
             // Route::post('/tes',[AdminBeritaController::class, 'create'])->name('save-berita');
@@ -70,9 +76,12 @@ Route::middleware('auth')->group(function(){
             // Route::post('/kategori/edit',[CategoryBeritaController::class, 'update'])->name('simpan-edit-kategori');
             Route::get('/{post:slug}',[AdminBeritaController::class, 'show'])->name('detail-berita');
             Route::get('/edit/{post:slug}',[AdminBeritaController::class, 'edit'])->name('edit-berita');
-            Route::post('/edit/{post:slug}',[AdminBeritaController::class, 'update'])->name('update-berita');
+            Route::put('/edit/{post:slug}',[AdminBeritaController::class, 'update'])->name('update-berita');
             Route::delete('/destroy/{post:slug}',[AdminBeritaController::class, 'destroy'])->name('hapus-berita');
         });
+        Route::resource('proyek-desa', ProyekDesaController::class);
+        Route::resource('lapak-desa', LapakDesaController::class);
+        Route::resource('category-lapak', CategoryLapakDesaController::class);
     });
 });
 

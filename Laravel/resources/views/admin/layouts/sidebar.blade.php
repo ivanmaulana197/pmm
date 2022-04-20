@@ -89,12 +89,28 @@
                             <span class="nav-link-text ps-1">Berita</span>
                         </div>
                     </a>
-                    <a class="nav-link {{ Request::is('admin/proyek-desa') ? 'active' : '' }}" href="../app/chat.html" role="button" aria-expanded="false">
+                    <a class="nav-link {{ Request::is('admin/lapak-desa') ? 'active' : '' }}" href="{{ route('lapak-desa.index') }}" role="button" aria-expanded="false">
+                        <div class="d-flex align-items-center">
+                            <span class="nav-link-icon">
+                                <span class="fas fa-comments"></span>
+                            </span>
+                            <span class="nav-link-text ps-1">Lapak Desa</span>
+                        </div>
+                    </a>
+                    <a class="nav-link {{ Request::is('admin/proyek-desa') ? 'active' : '' }}" href="{{ route('proyek-desa.index') }}" role="button" aria-expanded="false">
                         <div class="d-flex align-items-center">
                             <span class="nav-link-icon">
                                 <span class="fas fa-comments"></span>
                             </span>
                             <span class="nav-link-text ps-1">Proyek Desa</span>
+                        </div>
+                    </a>
+                    <a class="nav-link {{ Request::is('admin/pengaduan') ? 'active' : '' }}" href="{{ route('pengaduan') }}" role="button" aria-expanded="false">
+                        <div class="d-flex align-items-center">
+                            <span class="nav-link-icon">
+                                <span class="fas fa-comments"></span>
+                            </span>
+                            <span class="nav-link-text ps-1">Pengaduan</span>
                         </div>
                     </a>
 

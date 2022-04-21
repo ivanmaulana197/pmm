@@ -34,6 +34,13 @@ Route::get('/about',[HomeController::class, 'about']);
 Route::get('/pengaduan',[HomeController::class, 'pengaduan'])->name('pengaduan-home');
 Route::post('/pengaduan',[HomeController::class, 'storePengaduan'])->name('submit-pengaduan-home');
 
+Route::get('/aparatur-desa',[HomeController::class, 'aparatur'])->name('aparatur-desa');
+
+Route::get('/profile-wilayah-desa',[HomeController::class, 'profileWilayah'])->name('profile-wilayah');
+Route::get('/sejarah-desa',[HomeController::class, 'sejarahDesa'])->name('sejarah-desa');
+
+Route::get('/visi-misi',[HomeController::class, 'visiMisi'])->name('visi-misi');
+Route::get('/struktur-desa',[HomeController::class, 'strukturDesa'])->name('struktur-desa');
 
 
 Route::get('/berita',[BeritaController::class, 'index']);

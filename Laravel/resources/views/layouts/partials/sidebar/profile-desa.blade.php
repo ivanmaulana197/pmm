@@ -9,7 +9,7 @@
 </a>
 <ul class="nav collapse false" id="profiledesa">
     <li class="nav-item">
-        <a class="nav-link {{ Request::is('/profile-desa/profile-wilayah') ? 'active' : '' }}" href="#" aria-expanded="false">
+        <a class="nav-link {{ Request::is('profile-wilayah-desa') ? 'active' : '' }}" href="{{ route('profile-wilayah') }}" aria-expanded="false">
             <div class="d-flex align-items-center">
                 <span class="nav-link-text ps-1">Profile Wilayah Desa</span>
             </div>
@@ -17,7 +17,7 @@
         <!-- more inner pages-->
     </li>
     <li class="nav-item">
-        <a class="nav-link {{ Request::is('/profile-desa/sejarah-desa') ? 'active' : '' }}" href="#" aria-expanded="false">
+        <a class="nav-link {{ Request::is('sejarah-desa') ? 'active' : '' }}" href="{{ route('sejarah-desa') }}" aria-expanded="false">
             <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Sejarah Desa</span>
             </div>
         </a>

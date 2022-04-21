@@ -78,7 +78,11 @@
                 <div class="bg-white dark__bg-1000 rounded-2 py-2">
                     <a class="dropdown-item" href="/admin">My Dashboard</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Logout</a>
+                    <form action="/logout" method="post">
+                        @csrf
+                        <button type="submit" class="dropdown-item"><i class="bi bi-box-arrow-right"></i> Logout</button>
+
+                    </form>
                 </div>
             </div>
         </li>

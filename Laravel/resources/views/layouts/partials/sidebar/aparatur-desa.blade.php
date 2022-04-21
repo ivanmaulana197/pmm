@@ -1,4 +1,4 @@
-<a class="nav-link {{ Request::is('/aparatur-desa') ? 'active' : '' }}" href="../app/calendar.html" role="button" aria-expanded="false">
+<a class="nav-link {{ Request::is('aparatur-desa') ? 'active' : '' }}" href="{{ route('aparatur-desa') }}" role="button" aria-expanded="false">
     <div class="d-flex align-items-center">
         <span class="nav-link-icon">
             <span class="fas fa-sitemap"></span>

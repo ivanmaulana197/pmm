@@ -9,14 +9,14 @@
 </a>
 <ul class="nav collapse false" id="pemerintahandesa">
     <li class="nav-item">
-        <a class="nav-link {{ Request::is('/pemerintahan-desa/visi-misi') ? 'active' : '' }}" href="#" aria-expanded="false">
+        <a class="nav-link {{ Request::is('visi-misi') ? 'active' : '' }}" href="{{ route('visi-misi') }}" aria-expanded="false">
             <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Visi dan Misi</span>
             </div>
         </a>
         <!-- more inner pages-->
     </li>
     <li class="nav-item">
-        <a class="nav-link  {{ Request::is('/pemerintahan-desa/struktur-desa') ? 'active' : '' }}" href="../app/events/event-detail.html" aria-expanded="false">
+        <a class="nav-link  {{ Request::is('struktur-desa') ? 'active' : '' }}" href="{{ route('struktur-desa') }}" aria-expanded="false">
             <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Sturktur Desa</span>
             </div>
         </a>

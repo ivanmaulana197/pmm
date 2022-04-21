@@ -29,7 +29,7 @@
                 {{-- beranda --}}
                 <li class="nav-item">
                     <!-- parent pages-->
-                    <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="#" role="button" aria-expanded="false">
+                    <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="/" role="button" aria-expanded="false">
                         <div class="d-flex align-items-center">
                             <span class="nav-link-icon">
                                 <span class="fas fa-home"></span>
@@ -51,12 +51,12 @@
                    @include('layouts.partials.sidebar.aparatur-desa')
                     
                    @include('layouts.partials.sidebar.profile-desa')
-                   @include('layouts.partials.sidebar.data-desa')
+                   {{-- @include('layouts.partials.sidebar.data-desa') --}}
                    @include('layouts.partials.sidebar.pemerintahan-desa')
-                   @include('layouts.partials.sidebar.regulasi')
+                   {{-- @include('layouts.partials.sidebar.regulasi') --}}
                     
                     <!-- parent pages-->
-                    <a class="nav-link" href="{{ route('lapak-desa-home') }}" role="button" aria-expanded="false">
+                    <a class="nav-link {{ Request::is('lapak-desa*') ? 'active' : '' }}" href="{{ route('lapak-desa-home') }}" role="button" aria-expanded="false">
                         <div class="d-flex align-items-center">
                             <span class="nav-link-icon">
                                 <span class="fas fa-store"></span>
@@ -65,7 +65,7 @@
                         </div>
                     </a>
                     <!-- parent pages-->
-                    <a class="nav-link" href="{{ route('proyek-desa-home') }}" role="button" aria-expanded="false">
+                    <a class="nav-link {{ Request::is('proyek-desa*') ? 'active' : '' }}" href="{{ route('proyek-desa-home') }}" role="button" aria-expanded="false">
                         <div class="d-flex align-items-center">
                             <span class="nav-link-icon">
                                 <span class="fas fa-people-carry"></span>

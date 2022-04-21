@@ -19,17 +19,17 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         DB::table('identitas_desas')->insert([
-            'namaDesa' => Str::random(10),
-            'namaKabupaten' => Str::random(10),
-            'namaKecamatan' => Str::random(10),
-            'namaProvinsi' => Str::random(10),
-            'logo' => '1650182275.png',
+            'namaDesa' => 'Tamiajeng',
+            'namaKabupaten' => 'Mojokerto',
+            'namaKecamatan' => 'Trawas',
+            'namaProvinsi' => 'Jawa Timur',
+            'logo' => 'https://res.cloudinary.com/tamiajeng/image/upload/v1650433338/tamiajeng/2022-04-20_054217_Desain__sid__fFcxJnC.png',
         ]);
         DB::table('pemerintah_desas')->insert([
-            'namaKepalaDesa' => Str::random(10),
-            'kantor' => Str::random(10),
-            'telp' => Str::random(10),
-            'email' => Str::random(10),
+            'namaKepalaDesa' => 'WARNOTO',
+            'kantor' => 'Jl. Raya Tamiajeng No. 55',
+            'telp' => '081235226495',
+            'email' => 'Desatamiajeng04@gmail.com',
         ]);
         DB::table('users')->insert([
             'name' => 'Admin',
@@ -38,6 +38,22 @@ class DatabaseSeeder extends Seeder
             'updated_at' => Carbon::now(),
             'created_at' => Carbon::now(),
             'password' => bcrypt('12345')
+        ]);
+        DB::table('categories')->insert([
+            'nama_category' => 'Profile Desa',
+            'slug'=> 'profile-desa'
+        ]);
+        DB::table('categories')->insert([
+            'nama_category' => 'Sejarah Desa',
+            'slug'=> 'sejarah-desa'
+        ]);
+        DB::table('categories')->insert([
+            'nama_category' => 'Visi dan Misi',
+            'slug'=> 'visi-misi'
+        ]);
+        DB::table('categories')->insert([
+            'nama_category' => 'Struktur Desa',
+            'slug'=> 'struktur-desa'
         ]);
     }
 }

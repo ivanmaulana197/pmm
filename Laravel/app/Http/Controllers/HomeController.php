@@ -38,7 +38,6 @@ class HomeController extends Controller
         $aparaturs = AparaturDesa::all();
         return view('pengaduan.pengaduan' , compact('identitas', 'pemerintahan', 'aparaturs'));
     }
-
     public function storePengaduan(Request $request){
         $request->validate([
             'nama' => 'required|max:255',
@@ -52,4 +51,44 @@ class HomeController extends Controller
         ]);
         return back()->with('success', 'Pengaduan Berhasil dikirim');
     }
+    
+    public function aparatur(){
+        
+        $identitas = IdentitasDesa::find(1);
+        $pemerintahan = PemerintahDesa::find(1);
+        $aparaturs = AparaturDesa::all();
+        return view('aparatur-desa.index' , compact('identitas', 'pemerintahan', 'aparaturs'));
+    }
+
+    public function profileWilayah(){
+        $profile = Post::where('category_id',1)->first();
+        $identitas = IdentitasDesa::find(1);
+        $pemerintahan = PemerintahDesa::find(1);
+        $aparaturs = AparaturDesa::all();
+        return view('profile-wilayah' , compact('profile','identitas', 'pemerintahan', 'aparaturs'));
+    }
+    
+    public function sejarahDesa(){
+        $sejarah = Post::where('category_id',2)->first();
+        $identitas = IdentitasDesa::find(1);
+        $pemerintahan = PemerintahDesa::find(1);
+        $aparaturs = AparaturDesa::all();
+        return view('sejarah-desa' , compact('sejarah','identitas', 'pemerintahan', 'aparaturs'));
+    }
+    
+    public function visiMisi(){
+        $visimisi = Post::where('category_id',3)->first();
+        $identitas = IdentitasDesa::find(1);
+        $pemerintahan = PemerintahDesa::find(1);
+        $aparaturs = AparaturDesa::all();
+        return view('visi-misi-desa' , compact('visimisi','identitas', 'pemerintahan', 'aparaturs'));
+    }
+    public function strukturDesa(){
+        $struktur = Post::where('category_id',4)->first();
+        $identitas = IdentitasDesa::find(1);
+        $pemerintahan = PemerintahDesa::find(1);
+        $aparaturs = AparaturDesa::all();
+        return view('struktur-desa' , compact('struktur','identitas', 'pemerintahan', 'aparaturs'));
+    }
+
 }

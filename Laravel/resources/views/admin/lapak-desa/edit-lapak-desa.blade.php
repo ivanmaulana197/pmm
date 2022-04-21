@@ -26,13 +26,14 @@
             <h5>Tambah Proyek Desa</h5>
         </div>
         <div class="card-body">
-            <form action="{{ route('lapak-desa.store') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('lapak-desa.update', $lapak->slug) }}" method="post" enctype="multipart/form-data">
+                @method('PUT')
                 @csrf
                 <div class="row mb-3">
                     <label class="col-sm-2 col-form-label" for="namaLapak">Nama Lapak</label>
                     <div class="col-sm-10"> 
                         <input class="form-control  @error('namaLapak') is-invalid @enderror" type="text"
-                            name="namaLapak" placeholder="Masukkan Nama Lapak" value="{{ old('namaLapak')}}">
+                            name="namaLapak" placeholder="Masukkan Nama Lapak" value="{{ $lapak->namaLapak}}">
                         <small class="text-danger">@error('namaLapak') {{$message}} @enderror</small>
                     </div>
                 </div>
@@ -40,7 +41,7 @@
                     <label class="col-sm-2 col-form-label" for="pelapak">Nama Pelapak</label>
                     <div class="col-sm-10">
                         <input class="form-control  @error('pelapak') is-invalid @enderror" type="text"
-                            name="pelapak" placeholder="Masukkan Nama Pelapak" value="{{ old('pelapak')}}">
+                            name="pelapak" placeholder="Masukkan Nama Pelapak" value="{{ $lapak->pelapak}}">
                         <small class="text-danger">@error('pelapak') {{$message}} @enderror</small>
                     </div>
                 </div>
@@ -52,7 +53,12 @@
                             data-options='{"removeItemButton":true,"placeholder":false}'
                             aria-placeholder="Pilih kategori...">
                             @foreach ($categories as $category)
+                            @if($category->id==$lapak->category_id)
+                            <option value={{$category->id}} selected>{{$category->namaCategory}}</option>
+                            @else
                             <option value={{$category->id}}>{{$category->namaCategory}}</option>
+                            @endif
+
                             @endforeach
                         </select>
                         <small class="text-danger">@error('category_id') {{$message}} @enderror</small>
@@ -63,7 +69,7 @@
                     <label class="col-sm-2 col-form-label" for="alamat">Alamat</label>
                     <div class="col-sm-10">
                         <input class="form-control  @error('alamat') is-invalid @enderror" type="text" name="alamat"
-                        placeholder="Masukkan Lokasi Proyek" value="{{ old('alamat')}}">
+                        placeholder="Masukkan Lokasi Proyek" value="{{$lapak->alamat}}">
                         <small class="text-danger">@error('alamat') {{$message}} @enderror</small>
                     </div>
                 </div>
@@ -76,7 +82,7 @@
                                 <div class="input-group-text">Rp.</div>
                             </div>
                             <input class="form-control  @error('harga') is-invalid @enderror" type="number"
-                            name="harga" placeholder="Masukkan harga" value="{{ old('harga')}}">
+                            name="harga" placeholder="Masukkan harga" value="{{ $lapak->harga}}">
                             <small class="text-danger">@error('harga') {{$message}} @enderror</small>
                             
                         </div>
@@ -84,13 +90,10 @@
                 </div>
                 <div class="row mb-3">
                     <label class="col-sm-2 col-form-label" for="NoWA">No. WA</label>
-                    <div class="col-sm-10">
-                        
+                    <div class="col-sm-10">                        
                         <input class="form-control  @error('NoWA') is-invalid @enderror" type="number"
-                        name="NoWA" placeholder="Masukkan NoWA" value="{{ old('NoWA')}}">
-                        <small class="text-danger">@error('NoWA') {{$message}} @enderror</small>
-                        
-                        
+                        name="NoWA" placeholder="Masukkan NoWA" value="{{ $lapak->NoWA}}">
+                        <small class="text-danger">@error('NoWA') {{$message}} @enderror</small>                    
                     </div>
                 </div>
                 
@@ -100,6 +103,7 @@
                         
                             <input type="file" class="form-control @error('gambar') is-invalid @enderror" id="gambar" name="gambar">
                             <small class="text-danger">@error('gambar') {{$message}} @enderror</small>
+                            <img src="{{ $lapak->gambar}}" alt="" class="img-fluid img-thumbnail" alt="" width="260">
                         
                     </div>
                 </div>
@@ -107,7 +111,7 @@
                     <label class="col-sm-2 col-form-label" for="keterangan">Keterangan</label>
                     <div class="col-sm-10">
                         <textarea class="form-control  @error('keterangan') is-invalid @enderror" type="text" name="keterangan"
-                            placeholder="Masukkan keterangan" value="{{ old('keterangan')}}"></textarea>
+                            placeholder="Masukkan keterangan" >{{ $lapak->keterangan }}</textarea>
                         <small class="text-danger">@error('keterangan') {{$message}} @enderror</small>
                     </div>
                 </div>

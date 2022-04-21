@@ -17,10 +17,11 @@ return new class extends Migration
             $table->id();
             $table->string('namaLapak');
             $table->string('gambar');
+            $table->string('slug');
             $table->string('keterangan');
             $table->string('alamat');
             $table->integer('harga');
-            $table->foreignId('categoryLapak_id');
+            $table->foreignId('category_id');
             $table->string('pelapak');
             $table->integer('NoWA');
             $table->timestamps();

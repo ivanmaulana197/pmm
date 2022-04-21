@@ -138,23 +138,20 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {{-- @foreach ($posts as $post)
+                    @foreach ($lapaks as $lapak)
                     <tr>
-                        <td>{{ $post->title }}</td>
-                        <td>{{ $post->category->namaCategory_category }}</td>
+                        <td>{{ $lapak->namaLapak }}</td>
+                        
+                        <td>{{ $lapak->category->namaCategory }}</td>
                         <td>
-                            @if ( $post->status == "Draft")
-                            <span class="badge badge-soft-warning">{{ $post->status }}</span>
-                            @else
-                            <span class="badge badge-soft-success">{{ $post->status }}</span>
-                            @endif
+                           {{ $lapak->harga }}
                         </td>
                         <td>
-                            <a href="berita/{{ $post->slug }}" class="badge badge-soft-info">
+                            <a href="{{ route('lapak-desa.show', $lapak->slug) }}" class="badge badge-soft-info">
                                 <i class="bi bi-eye"></i> Detail</a>
-                            <a href="berita/edit/{{ $post->slug }}" class="badge badge-soft-warning">
+                            <a href="{{ route('lapak-desa.edit', $lapak->slug) }}" class="badge badge-soft-warning">
                                 <i class="bi bi-pencil"></i>Edit</a>
-                            <form action="{{ route('hapus-berita', [$post->slug]) }}" method="POST" class="d-inline">
+                            <form action="{{ route('lapak-desa.destroy', [$lapak->slug]) }}" method="POST" class="d-inline">
                                 @method('delete')
                                 @csrf
                                 <button class="badge bg-danger"><span class="bi bi-trash"></span> Delete</button>
@@ -162,7 +159,7 @@
 
                         </td>
                     </tr>
-                    @endforeach --}}
+                    @endforeach
                 </tbody>
             </table>
         </div>

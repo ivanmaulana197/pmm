@@ -13,7 +13,7 @@ class CategoryLapakDesa extends Model
 
     public function lapakDesa()
     {
-        return $this->hasMany(LapakDesa::class);
+        return $this->hasMany(LapakDesa::class,'foreign_key');
     }
 
     public function getRouteKeyName()

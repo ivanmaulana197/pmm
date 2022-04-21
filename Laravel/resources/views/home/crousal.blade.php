@@ -30,15 +30,15 @@
                     @for ($i=0;$i<5;$i++)
                         @if($i==0)
                             <div class="carousel-item active" data-bs-interval="4000">
-                                <a class="post1" href="{{ $posts[$i]->multipleImage[0] }}" data-gallery="gallery-1">
-                                    <img class="d-block w-100" src="{{ $posts[$i]->multipleImage[0] }}" alt="First slide" />
+                                <a class="post1" href="{{ $posts[$i]->multipleImage[0]->path }}" data-gallery="gallery-1">
+                                    <img class="d-block w-100" src="{{ $posts[$i]->multipleImage[0]->path }}" alt="First slide" />
                                 </a>
                                
                             </div>
                         @else
                             <div class="carousel-item" data-bs-interval="4000">
-                                <a class="post1" href="{{ $posts[$i]->multipleImage[0] }}" data-gallery="gallery-1">
-                                    <img class="d-block w-100" src="{{ $post->multipleImage[0] }}" alt="First slide" />
+                                <a class="post1" href="{{ $posts[$i]->multipleImage[0]->path }}" data-gallery="gallery-1">
+                                    <img class="d-block w-100" src="{{ $post->multipleImage[0]->path }}" alt="First slide" />
                                 </a>
                             </div>
                         @endif

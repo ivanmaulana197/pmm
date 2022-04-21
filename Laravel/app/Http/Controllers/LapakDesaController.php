@@ -4,24 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Models\AparaturDesa;
 use App\Models\IdentitasDesa;
+use App\Models\LapakDesa;
 use App\Models\PemerintahDesa;
-use App\Models\Post;
 use Illuminate\Http\Request;
 
-class BeritaController extends Controller
+class LapakDesaController extends Controller
 {
     public function index(){
-        $posts = Post::latest()->paginate(8);
+        $lapaks = LapakDesa::all();
         $identitas = IdentitasDesa::find(1);
         $pemerintahan = PemerintahDesa::find(1);
         $aparaturs = AparaturDesa::all();
-        return view('berita.index', compact('posts', 'identitas', 'pemerintahan', 'aparaturs'));
+        return view('lapak-desa.lapak-desa', compact('lapaks', 'identitas', 'pemerintahan', 'aparaturs'));
     }
 
-    public function show(Post $post){
+    public function show(LapakDesa $lapak){
         $identitas = IdentitasDesa::find(1);
         $pemerintahan = PemerintahDesa::find(1);
         $aparaturs = AparaturDesa::all();
-        return view('berita.detail', compact('post', 'identitas', 'pemerintahan', 'aparaturs'));
-    }
+        return view('lapak-desa.detail-lapak', compact('lapak', 'identitas', 'pemerintahan', 'aparaturs'));
+    }   
 }

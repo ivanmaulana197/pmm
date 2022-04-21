@@ -12,6 +12,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LapakDesaController as ControllersLapakDesaController;
+use App\Http\Controllers\ProyekDesaController as ControllersProyekDesaController;
 use App\Models\CategoryLapakDesa;
 use Illuminate\Support\Facades\Route;
 
@@ -36,6 +38,12 @@ Route::post('/pengaduan',[HomeController::class, 'storePengaduan'])->name('submi
 
 Route::get('/berita',[BeritaController::class, 'index']);
 Route::get('/berita/{post:slug}',[BeritaController::class, 'show'])->name('detail-berita-home');
+
+Route::get('/lapak-desa',[ControllersLapakDesaController::class, 'index'])->name('lapak-desa-home');
+Route::get('/lapak-desa/{lapak:slug}',[ControllersLapakDesaController::class, 'show'])->name('detail-lapak');
+
+Route::get('/proyek-desa',[ControllersProyekDesaController::class, 'index'])->name('proyek-desa-home');
+Route::get('/proyek-desa/{proyek:slug}',[ControllersProyekDesaController::class, 'show'])->name('detail-proyek');
 
 Route::get('/login',[AuthController::class, 'login'])->name('login');
 Route::post('/login',[AuthController::class, 'authenticate']);

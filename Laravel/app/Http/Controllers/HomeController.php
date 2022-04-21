@@ -18,7 +18,7 @@ class HomeController extends Controller
     public function home()
     {
         $data = Http::get('https://api.banghasan.com/sholat/format/json/jadwal/kota/776/tanggal/'.date("Y-m-d"))->json()['jadwal']['data'];
-        $posts = Post::all();
+        $posts = Post::latest()->paginate(6);
         $identitas = IdentitasDesa::find(1);
         $pemerintahan = PemerintahDesa::find(1);
         $aparaturs = AparaturDesa::all();

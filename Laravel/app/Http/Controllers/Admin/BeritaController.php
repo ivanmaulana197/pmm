@@ -117,6 +117,11 @@ class BeritaController extends Controller
                     'path' => $image,
                 ]);
             }
+        }else{
+            MultipleImage::create([
+                'post_id' => $data->id,
+                'path' => 'https://tamiajeng.my.id/desa/themes/batuah_22_4_2/images/pengganti.jpg',
+            ]);
         }
         return redirect(route('berita'));
         
@@ -168,43 +173,47 @@ class BeritaController extends Controller
             'title' => 'required|max:255',
             'body' => 'required',
             'category_id' => 'required',
-            'gambar' => 'image|mimes:jpeg,png,jpg,gif,svg',
+            'gambar[]' => 'image|mimes:jpeg,png,jpg,gif,svg',
             'status' => 'required',
         ]);
+     
 
-        $slug = SlugService::createSlug(Category::class, 'slug', $request->title);
+        $slug = SlugService::createSlug(Post::class, 'slug', $request->title);
 
-        $post->update([
-            'title' => $request->title,
-            'status' => $request->status,
-            'category_id' => $request->category_id,
-            'body' => $request->body,
-            'slug' => $slug,
-            'user_id' => Auth::user()->id,
-        ]);
+        
         if($request->has('gambar')){
             $images = MultipleImage::where('post_id',$post->id)->get();
+            
             foreach($images as $image){
                 CloudinaryStorage::delete($image->path);
                 $image->delete();
             }
-            foreach($request->file('gambar') as $gambar){
+            foreach($request->gambar as $gambar){
                 // $filename = time().'.'. $gambar->exetension();
                 // $file_name = $gambar->getClientOriginalName();
                 // $gambar->storeAs('thumbnail', $file_name);
                 // MultipleImage::create([
-                //     'post_id' => $post->id,
-                //     'path' => $result,
-                // ]);
-                
-                $image = CloudinaryStorage::upload($gambar->getRealPath(), $gambar->getClientOriginalName());
-                MultipleImage::create([
-                    'post_id' => $post->id,
-                    'path' => $image,
-                ]);
-                
+                    //     'post_id' => $post->id,
+                    //     'path' => $result,
+                    // ]);
+                    
+                    $image = CloudinaryStorage::upload($gambar->getRealPath(), $gambar->getClientOriginalName());
+                    
+                    MultipleImage::create([
+                        'post_id' => $post->id,
+                        'path' => $image,
+                    ]);
+                    
             }
         }
+            $post->update([
+                'title' => $request->title,
+                'status' => $request->status,
+                'category_id' => $request->category_id,
+                'body' => $request->body,
+                'slug' => $slug,
+                'user_id' => Auth::user()->id,
+            ]);
         return redirect(route('berita'));
     }
 

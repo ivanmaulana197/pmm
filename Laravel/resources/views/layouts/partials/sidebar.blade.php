@@ -56,7 +56,7 @@
                    @include('layouts.partials.sidebar.regulasi')
                     
                     <!-- parent pages-->
-                    <a class="nav-link" href="../app/chat.html" role="button" aria-expanded="false">
+                    <a class="nav-link" href="{{ route('lapak-desa-home') }}" role="button" aria-expanded="false">
                         <div class="d-flex align-items-center">
                             <span class="nav-link-icon">
                                 <span class="fas fa-store"></span>
@@ -65,7 +65,7 @@
                         </div>
                     </a>
                     <!-- parent pages-->
-                    <a class="nav-link" href="../app/chat.html" role="button" aria-expanded="false">
+                    <a class="nav-link" href="{{ route('proyek-desa-home') }}" role="button" aria-expanded="false">
                         <div class="d-flex align-items-center">
                             <span class="nav-link-icon">
                                 <span class="fas fa-people-carry"></span>
